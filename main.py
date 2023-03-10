@@ -1,14 +1,18 @@
-import requests
-import config
+"""
+created by Goncharova Kristina BIV221
+Get information about student from Cabinet MIEM and Lichess
+"""
 import json
+import requests
 import berserk
+import config
 # Данные из кабинета МИЭМа
-fl = open('./MIEM.json', 'w', encoding='utf-8')
-response = requests.get('https://cabinet.miem.hse.ru/api/student_profile',
-                        headers={"x-auth-token": config.MIEM_TOKEN})
-r = response.json()
-fl.write(json.dumps(r, ensure_ascii=False))
-fl.close()
+with open("./MIEM.json", 'w', encoding='utf-8') as fl:
+    response = requests.get('https://cabinet.miem.hse.ru/api/student_profile',
+                            headers={"x-auth-token": config.MIEM_TOKEN},
+                            timeout=10)
+    r = response.json()
+    fl.write(json.dumps(r, ensure_ascii=False))
 
 # Данные из Lichess
 session = berserk.TokenSession(config.LICHESS_TOKEN)
