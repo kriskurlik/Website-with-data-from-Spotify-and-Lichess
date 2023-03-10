@@ -1,4 +1,3 @@
-import os
 from dotenv import dotenv_values
 
 MIEM_TOKEN = dotenv_values(".env").get('MIEM_TOKEN')
