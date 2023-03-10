@@ -1,4 +1,5 @@
 /MIEM.json
 /Lichess.json
 /.env
-/api.env
+/.idea
+/__pycache__
