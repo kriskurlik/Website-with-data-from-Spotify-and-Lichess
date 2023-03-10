@@ -1,6 +1,6 @@
 """
 created by Goncharova Kristina BIV221
-Get information about student from Cabinet MIEM and Lichess
+Get information about person from Cabinet MIEM and Lichess
 """
 import json
 import requests
