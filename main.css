@@ -1,0 +1,54 @@
+*{color: #DCD6F7}
+.image img{
+    width: 250px;
+    border: 5px solid;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 20px;
+}
+
+.image1 img{
+    width: 80px;
+    margin-left: 10px;
+}
+
+.image2 img{
+    width: 40px;
+    margin-top:-6px;
+}
+
+.pin-info{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.frame{
+    display:flex;
+    justify-content: center;
+    grid-gap:8px;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.data{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+ol{
+    margin-block-start: 0;
+    margin-left: 20px;
+}
+body{
+    width:90%;
+    background: rgb(42,46,73);
+    margin:auto;
+    background: linear-gradient(0deg, rgba(42,46,73,1) 26%, rgba(115,119,184,1) 100%);
+    font-family: 'Raleway', sans-serif;
+}
+
