@@ -8,6 +8,16 @@ import berserk
 from jinja2 import Template
 import config
 
+URL = "https://spotify23.p.rapidapi.com/user_profile/"
+QUERYSTRING = {"id": str(config.ID_SPOTIFY), "playlistLimit": "10",
+               "artistLimit": "10"}
+HEADERS = {
+    "X-RapidAPI-Key": str(config.X_RapidAPI_Key),
+    "X-RapidAPI-Host": str(config.X_RapidAPI_Host)}
+TEMPLATE_PATH = "index1.html"
+INDEX_PATH = "index.html"
+
+
 # Данные из кабинета МИЭМа
 response = requests.get('https://cabinet.miem.hse.ru/api/student_profile',
                         headers={"x-auth-token": config.MIEM_TOKEN},
@@ -16,6 +26,7 @@ r = response.json()
 with open("./MIEM.json", 'w', encoding='utf-8') as fl:
     fl.write(json.dumps(r, ensure_ascii=False))
 
+
 # Данные из Lichess
 session = berserk.TokenSession(config.LICHESS_TOKEN)
 client = berserk.Client(session=session)
@@ -23,22 +34,13 @@ a = client.users.get_public_data(config.LICHESS_NICK)
 with open("./Lichess.json", "w", encoding="utf-8") as fl1:
     fl1.write(str(client.users.get_public_data(config.LICHESS_NICK)))
 
+
+
 # Данные из Спотифая
-URL = "https://spotify23.p.rapidapi.com/user_profile/"
-querystring = {"id": str(config.ID_SPOTIFY), "playlistLimit": "10",
-               "artistLimit": "10"}
-headers = {
-    "X-RapidAPI-Key": str(config.X_RapidAPI_Key),
-    "X-RapidAPI-Host": str(config.X_RapidAPI_Host)
-}
-answer = requests.request("GET", URL, headers=headers, params=querystring,
+answer = requests.request("GET", URL, headers=HEADERS, params=QUERYSTRING,
                           timeout=10)
 with open("./Spotify.json", "w", encoding="utf-8") as fl2:
     fl2.write(answer.text)
-
-
-TEMPLATE_PATH = "index1.html"
-INDEX_PATH = "index.html"
 
 
 def create_template(template_path):
@@ -66,7 +68,6 @@ def get_name_of_playlist(ans):
 
 if __name__ == '__main__':
     template = create_template(TEMPLATE_PATH)
-    print(a)
     playlist = get_name_of_playlist(answer)
     rendered_page = template.render(
         name=r["data"][0]["main"]["name"],
