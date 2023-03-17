@@ -31,7 +31,8 @@ headers = {
     "X-RapidAPI-Key": str(config.X_RapidAPI_Key),
     "X-RapidAPI-Host": str(config.X_RapidAPI_Host)
 }
-answer = requests.request("GET", URL, headers=headers, params=querystring)
+answer = requests.request("GET", URL, headers=headers, params=querystring,
+                          timeout=10)
 with open("./Spotify.json", "w", encoding="utf-8") as fl2:
     fl2.write(answer.text)
 
@@ -40,14 +41,14 @@ TEMPLATE_PATH = "index1.html"
 INDEX_PATH = "index.html"
 
 
-def create_template(TEMPLATE_PATH):
+def create_template(template_path):
     """
     Функция формирует шаблон из файла
     :param template_path:
     :return: Template(template_html)
     """
-    template_html = open(TEMPLATE_PATH, encoding="utf-8").read()
-    return Template(template_html)
+    with open(template_path, "r", encoding='utf-8') as template_html:
+        return Template(template_html)
 
 
 def get_name_of_playlist(ans):
