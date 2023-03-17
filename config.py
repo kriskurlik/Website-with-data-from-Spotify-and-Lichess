@@ -24,5 +24,3 @@ if X_RapidAPI_Key is None:
 X_RapidAPI_Host = dotenv_values(".env").get('X_RapidAPI_Host')
 if X_RapidAPI_Host is None:
     X_RapidAPI_Host = os.getenv('X_RapidAPI_Host')
-
-

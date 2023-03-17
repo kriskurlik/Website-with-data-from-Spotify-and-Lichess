@@ -25,7 +25,8 @@ with open("./Lichess.json", "w", encoding="utf-8") as fl1:
 
 # Данные из Спотифая
 URL = "https://spotify23.p.rapidapi.com/user_profile/"
-querystring = {"id": str(config.ID_SPOTIFY), "playlistLimit": "10", "artistLimit": "10"}
+querystring = {"id": str(config.ID_SPOTIFY), "playlistLimit": "10",
+               "artistLimit": "10"}
 headers = {
     "X-RapidAPI-Key": str(config.X_RapidAPI_Key),
     "X-RapidAPI-Host": str(config.X_RapidAPI_Host)
