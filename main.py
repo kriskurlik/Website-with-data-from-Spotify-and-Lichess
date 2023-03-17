@@ -35,7 +35,6 @@ with open("./Lichess.json", "w", encoding="utf-8") as fl1:
     fl1.write(str(client.users.get_public_data(config.LICHESS_NICK)))
 
 
-
 # Данные из Спотифая
 answer = requests.request("GET", URL, headers=HEADERS, params=QUERYSTRING,
                           timeout=10)
