@@ -48,7 +48,7 @@ def create_template(template_path):
     :return: Template(template_html)
     """
     with open(template_path, "r", encoding='utf-8') as fl4:
-        template_html=fl4.read()
+        template_html = fl4.read()
         return Template(template_html)
 
 
